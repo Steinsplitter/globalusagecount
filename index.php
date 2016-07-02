@@ -1,6 +1,6 @@
 <?php
 /**
- * @author Steinsplitter / https://de.wikipedia.org/wiki/Benutzer:Steinsplitter
+ * @author Steinsplitter / https://commons.wikimedia.org/wiki/User:Steinsplitter
  * @copyright 2016 GlobalUsageCount authors
  * @license http://unlicense.org/ Unlicense
  */
@@ -78,7 +78,6 @@ if (isset($getd)) {
         $r = $db->query('SELECT COUNT(gil_page) AS count FROM globalimagelinks WHERE gil_to  = "' . str_replace(" ", "_", $db->real_escape_string($getd)) . '" LIMIT 1;');
         unset($tools_mycnf, $tools_pw);
 }
-
         echo "<p><big>". htmlspecialchars($getd) ."</big></p>";
 $row = $r->fetch_assoc();
 
