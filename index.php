@@ -56,7 +56,7 @@ if (strpos($i18n, 'a') === false)
 }
 else
 {
-  $i18ntr = preg_replace("/\<nointerface\>.+\n*\<\/nointerface\>/", "", $i18n);
+  $i18ntr = preg_replace("/\<noinclude\>.+\n*\<\/noinclude\>/", "", $i18n);
   echo htmlspecialchars($i18ntr);
 }
 echo "<br><br>\n        <form class=\"form-search\">";
