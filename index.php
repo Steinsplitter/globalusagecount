@@ -57,7 +57,8 @@ if (strpos($i18n, 'a') === false)
 else
 {
   $i18ntr = preg_replace("/\<noinclude\>.+\n*\<\/noinclude\>/", "", $i18n);
-  echo htmlspecialchars($i18ntr);
+  $esc= htmlspecialchars($i18ntr);
+  echo preg_replace("/\n/", "<br>", $esc);
 }
 echo "<br><br>\n        <form class=\"form-search\">";
 echo "                <input type=\"text\" value=\"" . $lang . "\" name=\"lang\" id=\"lang\" class=\"hidden\" type=\"hidden\" style = \"display:none; visibility:hidden;\" />";
