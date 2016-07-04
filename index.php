@@ -21,16 +21,18 @@
         <div class="navbar navbar-fixed-top">
         <div class="navbar-inner">
         <div class="container">
-                <a class="brand" href="#">GlobalUsageCount</a>
-                <div class="nav-collapse collapse">
-                        <ul id="toolbar-right" class="nav pull-right">
+<?php
+function i18nheader($hname) {
+echo "          <a class=\"brand\" href=\"#\">$hname</a>
+                <div class=\"nav-collapse collapse\">
+                        <ul id=\"toolbar-right\" class=\"nav pull-right\">
                         </ul>
                 </div>
         </div>
         </div>
         </div>
-        <div class="container">
-<?php
+        <div class=\"container\"> ";
+}
 
 function i18nparser($url) {
         $con = curl_init();
@@ -52,10 +54,12 @@ if(preg_match("/^[a-z]{1,4}(-[a-z]{1,4}|)+$/",$getd2)) {
 $i18n = i18nparser('https://commons.wikimedia.org/w/index.php?title=Commons:User_scripts/GlobalUsageCount_i18n/'. $lang . '&action=raw&ctype=text/javascript');
 if (strpos($i18n, 'a') === false)
 {
+  i18nheader("GlobalUsageCounter");
   echo "Ooop :-(. No interface translation aviable for ". $lang .". <a href=\"https://commons.wikimedia.org/w/index.php?title=Special:Translate&group=page-Commons%3AUser+scripts%2FGlobalUsageCount+i18n&language=". $lang ."&action=page&filter=\">Please help with the translation!</a>";
 }
 else
 {
+  i18nheader("GlobalUsageCounter");
   $i18ntr = preg_replace("/\<noinclude\>.+\n*\<\/noinclude\>/", "", $i18n);
   $esc= htmlspecialchars($i18ntr);
   echo preg_replace("/\n/", "<br>", $esc);
