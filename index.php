@@ -10,7 +10,7 @@
 <head>
         <meta charset="utf-8">
         <title>GlobalUsageCount</title>
-        <link href="/steinsplitter/bootstrap.css" rel="stylesheet">
+        <link rel="stylesheet" href="//tools-static.wmflabs.org/cdnjs/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css">
         <style>
         body {
                 padding-top: 60px;
@@ -54,20 +54,22 @@ if(preg_match("/^[a-z]{1,4}(-[a-z]{1,4}|)+$/",$getd2)) {
 $i18n = i18nparser('https://commons.wikimedia.org/w/index.php?title=Commons:User_scripts/GlobalUsageCount_i18n/'. $lang . '&action=raw&ctype=text/javascript');
 if (strpos($i18n, 'a') === false)
 {
-  i18nheader("GlobalUsageCounter");
+  i18nheader("GlobalUsageCount");
   echo "Ooop :-(. No interface translation aviable for ". $lang .". <a href=\"https://commons.wikimedia.org/w/index.php?title=Special:Translate&group=page-Commons%3AUser+scripts%2FGlobalUsageCount+i18n&language=". $lang ."&action=page&filter=\">Please help with the translation!</a>";
 }
 else
 {
-  i18nheader("GlobalUsageCounter");
+  $i18nhe = preg_replace("/(.+\n*<!--header:|-->(.+[.\n]*)*)/", "", $i18n);
+  i18nheader(htmlspecialchars($i18nhe));
   $i18ntr = preg_replace("/\<noinclude\>.+\n*\<\/noinclude\>/", "", $i18n);
   $esc= htmlspecialchars($i18ntr);
   echo preg_replace("/\n/", "<br>", $esc);
 }
-echo "<br><br>\n        <form class=\"form-search\">";
+echo "<br><br>\n        <form class=\"input-prepend input-append\">";
+echo "<span class=\"add-on\">File:</span>";
 echo "                <input type=\"text\" value=\"" . $lang . "\" name=\"lang\" id=\"lang\" class=\"hidden\" type=\"hidden\" style = \"display:none; visibility:hidden;\" />";
 ?>
-                <input type="text" value="" name="file" id="fast" class="input-medium search-query"/>
+                <input type="text" value="" name="file" id="fast" class="input-medium appendedPrependedInput appendedInputButton"/>
                 <button type="submit" class="btn">&#128269;</button>
         </form>
         <br/>
@@ -86,7 +88,7 @@ if (isset($getd)) {
         echo "<p><big>". htmlspecialchars($getd) ."</big></p>";
 $row = $r->fetch_assoc();
 
-echo "<div style = \"text-align:center; border-color:Black; border-style:solid; border-width:1pt\"><big>" . $row['count'] ."</big></div>";
+echo "<div style = \"text-align:center; font-size: 150px; padding: 0.5em; border-color:Black; border-style:solid; border-width:1pt\">" . $row['count'] ."</div>";
 
         $r->close();
         $db->close();
