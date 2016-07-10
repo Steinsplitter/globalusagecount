@@ -55,7 +55,7 @@ $i18n = i18nparser('https://commons.wikimedia.org/w/index.php?title=Commons:User
 if (strpos($i18n, 'a') === false)
 {
   i18nheader("GlobalUsageCount");
-  echo "Ooop :-(. No interface translation aviable for ". $lang .". <a href=\"https://commons.wikimedia.org/w/index.php?title=Special:Translate&group=page-Commons%3AUser+scripts%2FGlobalUsageCount+i18n&language=". $lang ."&action=page&filter=\">Please help with the translation!</a>";
+  echo "Ooop :-(. No interface translation available for ". $lang .". <a href=\"https://commons.wikimedia.org/w/index.php?title=Special:Translate&group=page-Commons%3AUser+scripts%2FGlobalUsageCount+i18n&language=". $lang ."&action=page&filter=\">Please help with the translation!</a>";
 }
 else
 {
