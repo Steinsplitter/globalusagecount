@@ -51,7 +51,7 @@ if(preg_match("/^[a-z]{1,4}(-[a-z]{1,4}|)+$/",$getd2)) {
 } else {
      $lang = "en";
 }
-$i18n = i18nparser('https://commons.wikimedia.org/w/index.php?title=Commons:User_scripts/GlobalUsageCount_i18n/'. $lang . '&action=raw&ctype=text/javascript');
+$i18n = i18nparser('https://commons.wikimedia.org/w/index.php?title=Commons:User_scripts/GlobalUsageCount_i18n/'. $lang . '&action=raw&ctype=text');
 if (strpos($i18n, 'a') === false)
 {
   i18nheader("GlobalUsageCount");
